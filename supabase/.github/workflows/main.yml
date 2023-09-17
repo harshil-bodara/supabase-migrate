@@ -1,0 +1,28 @@
+name: Database Migrations
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  migrate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out the code
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: 14
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run database migrations
+        run: npm run migrate
+        env:
+          SUPABASE_URL:  https://vesxpvkrppaxyqpvgvgk.supabase.co
+          SUPABASE_API_KEY: yhkbra+Z8yd8OU9dl5F1mWlsiKyHNNMR2TSIux/1VbyVGWxFSnzP5MprQ0mQGUhNiOmRj8E+x1einrSY7Qz5tA==
